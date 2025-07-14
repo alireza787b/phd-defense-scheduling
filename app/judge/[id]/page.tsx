@@ -107,12 +107,6 @@ const abstract = `
             </div>
           </div>
 
-          <div className="border-t border-border pt-6">
-            <h5 className="font-semibold text-foreground mb-3">چکیده:</h5>
-            <p className="text-muted-foreground leading-relaxed text-justify">
-              {abstract}
-            </p>
-          </div>
         </section>
 
         {/* Meeting Details */}
