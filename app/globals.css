@@ -1,26 +1,327 @@
-@import "tailwindcss";
+/* app/globals.css  – put these two lines FIRST */
+@config "../tailwind.config.js";
+@import "tailwindcss";          /* ← this pulls in base + components + utilities */
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Light Mode - Professional Blue/Gray Theme */
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+    
+    /* Primary - Rich Blue */
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Card & Popover */
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+    
+    /* Secondary - Light Gray */
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    
+    /* Muted */
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    
+    /* Accent */
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    
+    /* Destructive - Red */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Borders & Inputs */
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 217 91% 60%;
+    
+    /* Success - Green */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --success-light: 142 76% 95%;
+    --success-light-foreground: 142 76% 26%;
+    
+    /* Warning - Amber */
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --warning-light: 38 92% 95%;
+    --warning-light-foreground: 38 92% 30%;
+    
+    /* Info */
+    --info: 217 91% 60%;
+    --info-foreground: 0 0% 100%;
+    --info-light: 217 91% 96%;
+    --info-light-foreground: 217 91% 40%;
+    
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Dark Mode - Professional Dark Theme */
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    
+    /* Primary - Bright Blue for Dark Mode */
+    --primary: 217 91% 65%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    
+    /* Card & Popover */
+    --card: 222.2 47.4% 11.2%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 47.4% 11.2%;
+    --popover-foreground: 210 40% 98%;
+    
+    /* Secondary - Dark Gray */
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    
+    /* Muted */
+    --muted: 217.2 32.6% 20%;
+    --muted-foreground: 215 20.2% 65.1%;
+    
+    /* Accent */
+    --accent: 217.2 32.6% 25%;
+    --accent-foreground: 210 40% 98%;
+    
+    /* Destructive - Bright Red for Dark */
+    --destructive: 0 72% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Borders & Inputs */
+    --border: 217.2 32.6% 25%;
+    --input: 217.2 32.6% 20%;
+    --ring: 217 91% 65%;
+    
+    /* Success - Bright Green for Dark */
+    --success: 142 70% 50%;
+    --success-foreground: 222.2 47.4% 11.2%;
+    --success-light: 142 70% 20%;
+    --success-light-foreground: 142 70% 85%;
+    
+    /* Warning - Bright Amber for Dark */
+    --warning: 38 92% 60%;
+    --warning-foreground: 222.2 47.4% 11.2%;
+    --warning-light: 38 92% 20%;
+    --warning-light-foreground: 38 92% 85%;
+    
+    /* Info */
+    --info: 217 91% 65%;
+    --info-foreground: 222.2 47.4% 11.2%;
+    --info-light: 217 91% 20%;
+    --info-light-foreground: 217 91% 85%;
+  }
+
+  body {
+    font-family: 'Vazirmatn', system-ui, -apple-system, sans-serif;
+    @apply bg-background text-foreground;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Calendar Styles - Enhanced */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+}
+
+/* Time Slot Buttons - Better Contrast */
+.time-slot-unselected {
+  @apply bg-secondary text-secondary-foreground;
+  @apply hover:bg-secondary/80 hover:shadow-sm;
+  @apply border border-border;
+}
+
+.time-slot-selected {
+  @apply bg-primary text-primary-foreground;
+  @apply shadow-md scale-105;
+  @apply ring-2 ring-primary/30;
+}
+
+/* Day Headers */
+.day-header-active {
+  @apply bg-gradient-to-b from-primary/10 to-primary/5;
+  @apply text-foreground font-medium;
+  @apply border-b-2 border-primary/20;
+}
+
+.day-header-inactive {
+  @apply bg-muted/50 text-muted-foreground;
+  @apply opacity-60;
+}
+
+.day-header-holiday {
+  @apply bg-destructive/10 text-destructive;
+  @apply border-b-2 border-destructive/20;
+}
+
+/* Success/Error Messages - High Contrast */
+.message-success {
+  @apply bg-[hsl(var(--success-light))] text-[hsl(var(--success-light-foreground))];
+  @apply border border-[hsl(var(--success))]/20;
+  @apply font-medium;
+}
+
+.message-error {
+  @apply bg-destructive/10 text-destructive;
+  @apply border border-destructive/20;
+  @apply font-medium;
+}
+
+.message-warning {
+  @apply bg-[hsl(var(--warning-light))] text-[hsl(var(--warning-light-foreground))];
+  @apply border border-[hsl(var(--warning))]/20;
+  @apply font-medium;
+}
+
+/* Info Boxes */
+.info-box {
+  @apply bg-[hsl(var(--info-light))] text-[hsl(var(--info-light-foreground))];
+  @apply border border-[hsl(var(--info))]/20;
+}
+
+/* Selected Time Pills */
+.time-pill {
+  @apply bg-primary/10 text-primary;
+  @apply border border-primary/20;
+  @apply font-medium px-3 py-1.5 rounded-full;
+}
+
+.dark .time-pill {
+  @apply bg-primary/20 text-primary;
+  @apply border border-primary/30;
+}
+
+/* Form Elements */
+.form-textarea {
+  @apply w-full px-4 py-3 rounded-lg;
+  @apply border border-input bg-background text-foreground;
+  @apply focus:ring-2 focus:ring-primary/50 focus:border-primary;
+  @apply placeholder:text-muted-foreground;
+  @apply transition-colors duration-200;
+}
+
+/* Buttons */
+.btn-primary {
+  @apply bg-primary text-primary-foreground;
+  @apply hover:bg-primary/90 active:bg-primary/80;
+  @apply shadow-lg hover:shadow-xl;
+  @apply transition-all duration-200;
+  @apply font-medium;
+}
+
+.btn-primary:disabled {
+  @apply bg-muted text-muted-foreground;
+  @apply shadow-none cursor-not-allowed;
+  @apply opacity-60;
+}
+
+/* Card Styles */
+.card-elevated {
+  @apply bg-card text-card-foreground;
+  @apply shadow-xl ring-1 ring-border/5;
+  @apply backdrop-blur-sm;
+}
+
+/* Scrollbar styling - Improved */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-muted rounded-lg;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/30 rounded-lg;
+  @apply hover:bg-muted-foreground/50;
+  @apply transition-colors;
+}
+
+/* Focus Visible */
+*:focus-visible {
+  @apply outline-none ring-2 ring-primary/50 ring-offset-2 ring-offset-background;
+  @apply rounded-md;
+}
+
+/* Gradient Backgrounds */
+.gradient-primary {
+  @apply bg-gradient-to-r from-primary to-primary/80;
+}
+
+.gradient-info {
+  @apply bg-gradient-to-r from-primary/10 to-accent/10;
+}
+
+/* Dark Mode Toggle Button */
+.dark-mode-toggle {
+  @apply p-2.5 rounded-lg;
+  @apply bg-secondary hover:bg-secondary/80;
+  @apply text-secondary-foreground;
+  @apply transition-all duration-200;
+  @apply hover:scale-110;
+}
+
+/* Link Styles */
+.link-primary {
+  @apply text-primary hover:text-primary/80;
+  @apply underline-offset-4 hover:underline;
+  @apply transition-colors duration-200;
+}
+
+/* Badge Styles */
+.badge {
+  @apply inline-flex items-center gap-1.5;
+  @apply px-2.5 py-0.5 rounded-full;
+  @apply text-xs font-medium;
+}
+
+.badge-primary {
+  @apply bg-primary/10 text-primary;
+  @apply border border-primary/20;
+}
+
+.badge-success {
+  @apply bg-[hsl(var(--success-light))] text-[hsl(var(--success-light-foreground))];
+  @apply border border-[hsl(var(--success))]/20;
+}
+
+/* Responsive Typography */
+@media (max-width: 640px) {
+  html {
+    font-size: 14px;
+  }
 }
