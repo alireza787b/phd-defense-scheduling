@@ -23,7 +23,7 @@ export const JUDGES_DB: Judge[] = [
   { id: '1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d', name: 'دکتر علیرضا شریفی',  role: 'داور داخل دانشکده' },
   { id: '9e8d7c6b-5a4f-3e2d-1c0b-9a8f7e6d5c4b', name: 'دکتر سعید خدایگان',  role: 'داور داخل دانشگاه' },
   { id: '5c4b3a2f-1e0d-9c8b-7a6f-5e4d3c2b1a0f', name: 'دکتر علیرضا رودباری', role: 'داور خارج دانشگاه' },
-  { id: '3c2b3ف2f-1e0d-9cلb-7a6f-5e4d3c2b1a1f', name: 'دکتر محمد مراد', role: 'ناظر جلسه' },
+  { id: '2c6b3a2f-1e3d-9c8b-7a6f-5e4a3c2b1a4f', name: 'دکتر محمد مراد', role: 'ناظر جلسه' },
 ];
 
 export const getJudgeById = (id: string): Judge | null =>
