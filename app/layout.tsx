@@ -1,5 +1,7 @@
 /* app/layout.tsx */
-import "./globals.css";
+import './globals.css';
+import { vazir } from './fonts';
+
 import type { Metadata } from "next";
 
 /* SEO ---------------------------------------------------- */
@@ -11,16 +13,8 @@ export const metadata: Metadata = {
 /* Root layout ------------------------------------------- */
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    /* ————————————————————————————————————————————————
-       ❶  Add the “dark” class alongside scroll-smooth so
-           Tailwind’s dark-mode tokens become active.
-       ———————————————————————————————————————————————— */
-    <html lang="fa" dir="rtl" className="scroll-smooth">
-      {/* Google font in a proper App-Router <head> file, not here. */}
-      <body
-        suppressHydrationWarning
-        className="font-vazir bg-background text-foreground transition-colors"
-      >
+    <html lang="fa" dir="rtl" className={`scroll-smooth ${vazir.className}`}>
+      <body suppressHydrationWarning className={`bg-background text-foreground transition-colors ${vazir.className}`}>
         {children}
       </body>
     </html>

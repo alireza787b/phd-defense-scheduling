@@ -150,12 +150,6 @@
   animation: slideIn 0.3s ease-out;
 }
 
-/* Calendar Styles - Enhanced */
-.calendar-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 0.5rem;
-}
 
 /* Time Slot Buttons - Better Contrast */
 .time-slot-unselected {
@@ -324,4 +318,11 @@
   html {
     font-size: 14px;
   }
+}
+
+/* app/globals.css */
+.calendar-grid{
+  @apply w-full overflow-visible gap-2;   /* let HTML decide # of columns */
+  grid-auto-rows: max-content;            /* rows grow with content       */
+
 }

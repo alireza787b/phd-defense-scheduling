@@ -24,7 +24,7 @@ export const JUDGES_DB: Judge[] = [
   },
   {
     id: "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
-    name: "دکتر شریفی",
+    name: "دکتر علیرضا شریفی",
     role: "داور داخل دانشکده"
   },
   {
@@ -34,7 +34,7 @@ export const JUDGES_DB: Judge[] = [
   },
   {
     id: "5c4b3a2f-1e0d-9c8b-7a6f-5e4d3c2b1a0f",
-    name: "دکتر علی رودباری",
+    name: "دکتر علیرضا رودباری",
     role: "داور خارج دانشگاه"
   }
 ];
@@ -81,7 +81,7 @@ export function generateTimeSlots(): TimeSlot[] {
 
   dates.forEach(dateInfo => {
     const isWeekend = dateInfo.dayName === 'پنج‌شنبه' || dateInfo.dayName === 'جمعه';
-    const isHoliday = (dateInfo.month === 6 && (dateInfo.day == 10 || dateInfo.day ==2 )) || dateInfo.dayName === 'پنج‌شنبه' || dateInfo.dayName === 'جمعه';
+    const isHoliday = (dateInfo.month == 6 && (dateInfo.day == 10 || dateInfo.day == 2 )) || dateInfo.dayName === 'پنج‌شنبه' || dateInfo.dayName === 'جمعه';
     
     timeSlots.push({
       date: dateInfo.date,

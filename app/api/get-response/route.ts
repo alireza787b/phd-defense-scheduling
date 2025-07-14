@@ -10,7 +10,12 @@ export async function GET(request: Request) {
     const dataPath = path.join(process.cwd(), 'data', 'responses.json');
     const data = await fs.readFile(dataPath, 'utf-8');
     const responses = JSON.parse(data);
-    return NextResponse.json(responses[judgeId] || null);
+    // Assume judgeId is defined earlier
+    if (judgeId == null) {
+      return NextResponse.json(null);
+    }
+    return NextResponse.json(responses[judgeId] ?? null);
+
   } catch {
     return NextResponse.json(null);
   }
